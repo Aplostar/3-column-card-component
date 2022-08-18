@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap");
+@import "card";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  display: grid;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 15px;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    h2 {
+      color: $light-grey;
+      font-family: "Big Shoulders Display";
+      font-weight: 700;
+      font-size: 30px;
+    }
+
+    p {
+      font-family: "Lexend Deca";
+      line-height: 1.5;
+    }
+    .more {
+      border: none;
+      background-color: $light-grey;
+      padding: 15px 30px;
+      border-radius: 100px;
+      width: 60%;
+      font-family: "Lexend Deca";
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: 1fr;
+    width: 300px;
+    border-radius: 10px;
+    .card {
+      padding: 30px;
+      height: 400px;
+      img {
+        margin-bottom: 30px;
+      }
+      h2 {
+        margin-bottom: 30px;
+      }
+      p {
+      }
+    }
+    .card-1 {
+      border-radius: 10px 10px 0 0;
+    }
+    .card-3 {
+      border-radius: 0 0 10px 10px;
+    }
+  }
+}
+
+@media (min-width: 801px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+  main {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1000px;
+    padding: 20px;
+    height: 600px;
+    margin: 0 auto;
+
+    .card {
+      padding: 40px;
+      img {
+        margin-bottom: 40px;
+        width: 90px;
+      }
+      h2 {
+        margin-bottom: 40px;
+      }
+      p {
+        // margin-bottom: 80px;
+      }
+    }
+
+    .card-1 {
+      border-radius: 10px 0 0 10px;
+    }
+    .card-3 {
+      border-radius: 0 10px 10px 0;
+    }
+  }
+}
+
+$colors: hsl(31, 77%, 52%), hsl(184, 100%, 22%), hsl(179, 100%, 13%);
+
+@for $i from 1 through 3 {
+  .card-#{$i} {
+    @include card(nth($colors, $i));
+  }
+}
